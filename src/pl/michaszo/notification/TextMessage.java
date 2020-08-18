@@ -2,10 +2,11 @@ package pl.michaszo.notification;
 
 import pl.michaszo.order.Order;
 
-public class TextMessage {
+public class TextMessage implements Observer {
 
-    public void updateOrderStatus(Order order) {
-        System.out.println("Zam. nr: " + order.getOrderNumber() + " " + order.getOrderStatus());
+    @Override
+    public void update(Order order) {
+        System.out.println("SMS. Zam. nr: " + order.getOrderNumber() + " " + order.getOrderStatus());
     }
 
 }

@@ -2,10 +2,10 @@ package pl.michaszo.notification;
 
 import pl.michaszo.order.Order;
 
-public class EmailNotification {
+public class EmailNotification implements Observer {
 
-    public void updateOrderStatus(Order order) {
-        System.out.println("Zam. nr: " + order.getOrderNumber() + " " + order.getOrderStatus());
+    @Override
+    public void update(Order order) {
+        System.out.println("Email. Zam. nr: " + order.getOrderNumber() + " " + order.getOrderStatus());
     }
-    
 }

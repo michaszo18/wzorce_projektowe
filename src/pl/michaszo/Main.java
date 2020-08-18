@@ -10,14 +10,26 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Order o = new Order(1024, OrderStatus.ZAREJESTROWANE);
+        Order order = new Order(1024, OrderStatus.ZAREJESTROWANE);
 
         var textMessage = new TextMessage();
         var mobileAppNotification = new MobileAppNotification();
         var emailNotification = new EmailNotification();
 
-        textMessage.updateOrderStatus(o);
-        mobileAppNotification.updateOrderStatus(o);
-        emailNotification.updateOrderStatus(o);
+        order.registerObserver(emailNotification);
+
+        order.notifyObservers();
+
+
+        order.registerObserver(mobileAppNotification);
+        order.registerObserver(textMessage);
+
+        order.changeOrderStatus(OrderStatus.WYSŁANE);
+
+        order.unregisterObserver(mobileAppNotification);
+        order.unregisterObserver(textMessage);
+
+        order.changeOrderStatus(OrderStatus.ODEBRANE);
+
     }
 }
