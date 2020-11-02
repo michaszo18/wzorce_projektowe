@@ -3,10 +3,21 @@ package pl.michaszo;
 public class Main {
 
     public static void main(String[] args) {
-	    GameEngine gameEngine = GameEngine.getInstance();
 
-	    GameEngine gameEngine1 = GameEngine.getInstance();
+        GuessGame game = GuessGame.getInstance();
 
-        System.out.println(gameEngine == gameEngine1);
+        game.play();
+
+        int score = game.getScore();
+
+        GuessGame anotherGameReference = GuessGame.getInstance();
+
+        if(game == anotherGameReference) {
+            System.out.println("Singleton!");
+            if(score == anotherGameReference.getScore()) {
+                System.out.println(anotherGameReference.getScore());
+                System.out.println("I punkty się zgadzają!");
+            }
+        }
     }
 }
