@@ -4,7 +4,7 @@ public class GameEngine {
 
     public int hp = 100;
     public String characterName = "Mike";
-    private static GameEngine instance;
+    private static GameEngine instance = new GameEngine();
 
     private GameEngine() {
     }
@@ -18,11 +18,6 @@ public class GameEngine {
     }
 
     public static GameEngine getInstance() {
-        if (instance == null) {
-            synchronized (GameEngine.class) {
-                instance = new GameEngine();
-            }
-        }
         return instance;
     }
 }
